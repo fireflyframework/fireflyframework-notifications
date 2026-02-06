@@ -5,29 +5,29 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>com.firefly</groupId>
-        <artifactId>lib-parent-pom</artifactId>
+        <groupId>org.fireflyframework</groupId>
+        <artifactId>fireflyframework-parent</artifactId>
         <version>1.0.0-SNAPSHOT</version>
         <relativePath/>
     </parent>
 
-    <groupId>com.firefly</groupId>
-    <artifactId>lib-notifications</artifactId>
+    <groupId>org.fireflyframework</groupId>
+    <artifactId>fireflyframework-notifications</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <packaging>pom</packaging>
 
-    <name>Firefly Notifications Library</name>
+    <name>Firefly Framework - Notifications Library</name>
     <description>Ports, DTOs and application services for Notifications (email, sms, push)</description>
 
     <modules>
-        <module>lib-notifications-core</module>
+        <module>fireflyframework-notifications-core</module>
     </modules>
 
     <dependencyManagement>
         <dependencies>
             <dependency>
-                <groupId>com.firefly</groupId>
-                <artifactId>lib-notifications-core</artifactId>
+                <groupId>org.fireflyframework</groupId>
+                <artifactId>fireflyframework-notifications-core</artifactId>
                 <version>${project.version}</version>
             </dependency>
         </dependencies>

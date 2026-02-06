@@ -1,4 +1,4 @@
-# Hexagonal Architecture - lib-notifications
+# Hexagonal Architecture - fireflyframework-notifications
 
 ## Table of Contents
 
@@ -13,7 +13,7 @@
 
 ## Introduction
 
-The `lib-notifications` library implements **Hexagonal Architecture** (also known as Ports and Adapters pattern) to provide a clean, maintainable, and testable notification system. This architectural style was introduced by Alistair Cockburn and focuses on separating the core business logic from external dependencies.
+The `fireflyframework-notifications` library implements **Hexagonal Architecture** (also known as Ports and Adapters pattern) to provide a clean, maintainable, and testable notification system. This architectural style was introduced by Alistair Cockburn and focuses on separating the core business logic from external dependencies.
 
 ### Why Hexagonal Architecture?
 
@@ -36,7 +36,7 @@ Traditional layered architectures often suffer from tight coupling between busin
                                 ▼
 ┌───────────────────────────────────────────────────────────────────────┐
 │                        APPLICATION LAYER                              │
-│                      (lib-notifications-core)                         │
+│                      (fireflyframework-notifications-core)                         │
 │                                                                       │
 │    ┌─────────────────────────────────────────────────────────┐      │
 │    │  EmailService │ SMSService │ PushService                │      │
@@ -65,7 +65,7 @@ Traditional layered architectures often suffer from tight coupling between busin
 │                         (Separate Maven Modules)                      │
 │                                                                       │
 │  ┌──────────────────────┐  ┌──────────────────────┐                 │
-│  │ lib-notifications-   │  │ lib-notifications-   │                 │
+│  │ fireflyframework-notifications-   │  │ fireflyframework-notifications-   │                 │
 │  │      sendgrid        │  │      resend          │                 │
 │  │                      │  │                      │                 │
 │  │ SendGridEmailProvider│  │ ResendEmailProvider  │                 │
@@ -74,7 +74,7 @@ Traditional layered architectures often suffer from tight coupling between busin
 │  └──────────────────────┘  └──────────────────────┘                 │
 │                                                                       │
 │  ┌──────────────────────┐  ┌──────────────────────┐                 │
-│  │ lib-notifications-   │  │ lib-notifications-   │                 │
+│  │ fireflyframework-notifications-   │  │ fireflyframework-notifications-   │                 │
 │  │      twilio          │  │      firebase        │                 │
 │  │                      │  │                      │                 │
 │  │  TwilioSMSProvider   │  │   FcmPushProvider    │                 │
@@ -145,7 +145,7 @@ All communication between layers uses immutable DTOs:
 
 ### Domain Layer (Ports)
 
-**Location**: `lib-notifications-core/src/main/java/.../interfaces`
+**Location**: `fireflyframework-notifications-core/src/main/java/.../interfaces`
 
 **Responsibilities**:
 - Define contracts for notification delivery (port interfaces)
@@ -176,7 +176,7 @@ public interface PushProvider {
 
 ### Application Layer (Services)
 
-**Location**: `lib-notifications-core/src/main/java/.../core/services`
+**Location**: `fireflyframework-notifications-core/src/main/java/.../core/services`
 
 **Responsibilities**:
 - Orchestrate notification delivery
@@ -209,7 +209,7 @@ public class EmailServiceImpl implements EmailService {
 
 ### Infrastructure Layer (Adapters)
 
-**Location**: Separate Maven modules (`lib-notifications-*`)
+**Location**: Separate Maven modules (`fireflyframework-notifications-*`)
 
 **Responsibilities**:
 - Implement port interfaces
@@ -220,7 +220,7 @@ public class EmailServiceImpl implements EmailService {
 **Adapter Structure** (using SendGrid as example):
 
 ```
-lib-notifications-sendgrid/
+fireflyframework-notifications-sendgrid/
 ├── pom.xml                                    # Dependencies (SendGrid SDK, core)
 ├── README.md                                  # Adapter-specific docs
 └── src/main/java/.../providers/sendgrid/
@@ -267,12 +267,12 @@ public class SendGridEmailProvider implements EmailProvider {
 ```
 Client Application
     ↓ (depends on)
-lib-notifications-core (Application + Domain)
+fireflyframework-notifications-core (Application + Domain)
     ↑ (implemented by)
-lib-notifications-sendgrid (Adapter)
-lib-notifications-resend (Adapter)
-lib-notifications-twilio (Adapter)
-lib-notifications-firebase (Adapter)
+fireflyframework-notifications-sendgrid (Adapter)
+fireflyframework-notifications-resend (Adapter)
+fireflyframework-notifications-twilio (Adapter)
+fireflyframework-notifications-firebase (Adapter)
 ```
 
 ### Runtime Dependencies (Spring DI)
@@ -296,8 +296,8 @@ The **core never imports adapters**. Adapters import the core and implement its 
 
 ```bash
 mvn archetype:generate \
-  -DgroupId=com.firefly \
-  -DartifactId=lib-notifications-aws-ses \
+  -DgroupId=org.fireflyframework \
+  -DartifactId=fireflyframework-notifications-aws-ses \
   -DarchetypeArtifactId=maven-archetype-quickstart
 ```
 
@@ -305,8 +305,8 @@ mvn archetype:generate \
 
 ```xml
 <dependency>
-    <groupId>com.firefly</groupId>
-    <artifactId>lib-notifications-core</artifactId>
+    <groupId>org.fireflyframework</groupId>
+    <artifactId>fireflyframework-notifications-core</artifactId>
     <version>${project.version}</version>
 </dependency>
 ```
@@ -314,7 +314,7 @@ mvn archetype:generate \
 ### Step 3: Implement Port Interface
 
 ```java
-package com.firefly.core.notifications.providers.awsses.core.v1;
+package org.fireflyframework.notifications.providers.awsses.core.v1;
 
 @Component
 public class AwsSesEmailProvider implements EmailProvider {

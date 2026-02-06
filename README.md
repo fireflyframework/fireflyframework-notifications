@@ -1,4 +1,4 @@
-# lib-notifications
+# fireflyframework-notifications
 
 Firefly Notifications Library - A hexagonal architecture implementation for multi-channel notifications.
 
@@ -35,7 +35,7 @@ This library provides a clean, testable notification system for email, SMS, and 
 
 ### Components
 
-#### Core Module (`lib-notifications-core`)
+#### Core Module (`fireflyframework-notifications-core`)
 
 **Domain Layer (Ports & DTOs):**
 - `EmailProvider`, `SMSProvider`, `PushProvider` - Port interfaces defining contracts
@@ -49,10 +49,10 @@ This library provides a clean, testable notification system for email, SMS, and 
 
 #### Adapter Modules (Infrastructure)
 
-- **`lib-notifications-sendgrid`** - SendGrid email adapter
-- **`lib-notifications-resend`** - Resend email adapter  
-- **`lib-notifications-twilio`** - Twilio SMS adapter
-- **`lib-notifications-firebase`** - Firebase Cloud Messaging push adapter
+- **`fireflyframework-notifications-sendgrid`** - SendGrid email adapter
+- **`fireflyframework-notifications-resend`** - Resend email adapter  
+- **`fireflyframework-notifications-twilio`** - Twilio SMS adapter
+- **`fireflyframework-notifications-firebase`** - Firebase Cloud Messaging push adapter
 
 Each adapter implements the corresponding port interface and handles provider-specific integration details.
 
@@ -62,8 +62,8 @@ Add the core library to your Spring Boot application:
 
 ```xml path=null start=null
 <dependency>
-  <groupId>com.firefly</groupId>
-  <artifactId>lib-notifications-core</artifactId>
+  <groupId>org.fireflyframework</groupId>
+  <artifactId>fireflyframework-notifications-core</artifactId>
   <version>1.0.0-SNAPSHOT</version>
 </dependency>
 ```
@@ -73,29 +73,29 @@ Then add one or more adapter libraries based on your notification needs:
 ```xml path=null start=null
 <!-- For email via SendGrid -->
 <dependency>
-  <groupId>com.firefly</groupId>
-  <artifactId>lib-notifications-sendgrid</artifactId>
+  <groupId>org.fireflyframework</groupId>
+  <artifactId>fireflyframework-notifications-sendgrid</artifactId>
   <version>1.0.0-SNAPSHOT</version>
 </dependency>
 
 <!-- For email via Resend -->
 <dependency>
-  <groupId>com.firefly</groupId>
-  <artifactId>lib-notifications-resend</artifactId>
+  <groupId>org.fireflyframework</groupId>
+  <artifactId>fireflyframework-notifications-resend</artifactId>
   <version>1.0.0-SNAPSHOT</version>
 </dependency>
 
 <!-- For SMS via Twilio -->
 <dependency>
-  <groupId>com.firefly</groupId>
-  <artifactId>lib-notifications-twilio</artifactId>
+  <groupId>org.fireflyframework</groupId>
+  <artifactId>fireflyframework-notifications-twilio</artifactId>
   <version>1.0.0-SNAPSHOT</version>
 </dependency>
 
 <!-- For push notifications via Firebase -->
 <dependency>
-  <groupId>com.firefly</groupId>
-  <artifactId>lib-notifications-firebase</artifactId>
+  <groupId>org.fireflyframework</groupId>
+  <artifactId>fireflyframework-notifications-firebase</artifactId>
   <version>1.0.0-SNAPSHOT</version>
 </dependency>
 ```
@@ -264,7 +264,7 @@ public void testEmailNotification() {
 For detailed architecture documentation, see [ARCHITECTURE.md](ARCHITECTURE.md).
 
 For adapter-specific configuration and usage:
-- [SendGrid Adapter](../lib-notifications-sendgrid/README.md)
-- [Resend Adapter](../lib-notifications-resend/README.md)
-- [Twilio Adapter](../lib-notifications-twilio/README.md)
-- [Firebase Adapter](../lib-notifications-firebase/README.md)
+- [SendGrid Adapter](../fireflyframework-notifications-sendgrid/README.md)
+- [Resend Adapter](../fireflyframework-notifications-resend/README.md)
+- [Twilio Adapter](../fireflyframework-notifications-twilio/README.md)
+- [Firebase Adapter](../fireflyframework-notifications-firebase/README.md)
