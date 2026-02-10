@@ -1,5 +1,7 @@
 # fireflyframework-notifications
 
+[![CI](https://github.com/fireflyframework/fireflyframework-notifications/actions/workflows/ci.yml/badge.svg)](https://github.com/fireflyframework/fireflyframework-notifications/actions/workflows/ci.yml)
+
 Firefly Notifications Library - A hexagonal architecture implementation for multi-channel notifications.
 
 ## Overview
