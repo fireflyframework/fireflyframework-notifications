@@ -20,19 +20,19 @@ package org.fireflyframework.notifications.core.services.sms.v1;
 import org.fireflyframework.notifications.interfaces.dtos.sms.v1.SMSRequestDTO;
 import org.fireflyframework.notifications.interfaces.dtos.sms.v1.SMSResponseDTO;
 import org.fireflyframework.notifications.interfaces.interfaces.providers.sms.v1.SMSProvider;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
 
 @Service
+@RequiredArgsConstructor
 public class SMSServiceImpl implements SMSService {
 
-    @Autowired
-    private SMSProvider smsProvider;
+    private final SMSProvider smsProvider;
 
     @Override
     public Mono<SMSResponseDTO> sendSMS(SMSRequestDTO request) {
-        return Mono.fromCallable(() -> smsProvider.sendSMS(request))
+        return smsProvider.sendSMS(request)
                 .onErrorResume(error -> Mono.just(SMSResponseDTO.error(error.getMessage())));
     }
 }

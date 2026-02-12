@@ -10,6 +10,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
+import reactor.core.publisher.Mono;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -21,7 +22,7 @@ class SMSServiceImplTest {
     static class TestBeans {
         @Bean
         SMSProvider smsProvider() {
-            return request -> SMSResponseDTO.success("sms-123");
+            return request -> Mono.just(SMSResponseDTO.success("sms-123"));
         }
     }
 

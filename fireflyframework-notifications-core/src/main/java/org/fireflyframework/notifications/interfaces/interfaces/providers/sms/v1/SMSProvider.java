@@ -19,6 +19,7 @@ package org.fireflyframework.notifications.interfaces.interfaces.providers.sms.v
 
 import org.fireflyframework.notifications.interfaces.dtos.sms.v1.SMSRequestDTO;
 import org.fireflyframework.notifications.interfaces.dtos.sms.v1.SMSResponseDTO;
+import reactor.core.publisher.Mono;
 
 /**
  * Port (outbound interface) for sending SMS notifications.
@@ -36,7 +37,7 @@ public interface SMSProvider {
      * Send an SMS using the provider's infrastructure.
      *
      * @param request SMS request containing recipient phone number and message text
-     * @return Response containing delivery status and message ID
+     * @return Reactive response containing delivery status and message ID
      */
-    SMSResponseDTO sendSMS(SMSRequestDTO request);
+    Mono<SMSResponseDTO> sendSMS(SMSRequestDTO request);
 }
