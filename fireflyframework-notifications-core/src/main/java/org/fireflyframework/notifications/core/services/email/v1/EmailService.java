@@ -19,8 +19,20 @@ package org.fireflyframework.notifications.core.services.email.v1;
 
 import org.fireflyframework.notifications.interfaces.dtos.email.v1.EmailRequestDTO;
 import org.fireflyframework.notifications.interfaces.dtos.email.v1.EmailResponseDTO;
+import org.fireflyframework.notifications.interfaces.dtos.email.v1.EmailTemplateRequestDTO;
 import reactor.core.publisher.Mono;
 
 public interface EmailService {
     Mono<EmailResponseDTO> sendEmail(EmailRequestDTO request);
+
+    /**
+     * Send a templated email. The template is rendered before sending.
+     *
+     * @param request the template email request (templateId + variables + recipients)
+     * @return a Mono emitting the email response
+     */
+    default Mono<EmailResponseDTO> sendTemplateEmail(EmailTemplateRequestDTO request) {
+        return Mono.error(new UnsupportedOperationException(
+                "Template email not supported. Configure a NotificationTemplateEngine bean."));
+    }
 }
