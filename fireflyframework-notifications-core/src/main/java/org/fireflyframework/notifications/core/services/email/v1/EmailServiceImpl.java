@@ -17,21 +17,51 @@
 
 package org.fireflyframework.notifications.core.services.email.v1;
 
+import lombok.extern.slf4j.Slf4j;
+import org.fireflyframework.notifications.core.services.template.NotificationTemplateEngine;
 import org.fireflyframework.notifications.interfaces.dtos.email.v1.EmailRequestDTO;
 import org.fireflyframework.notifications.interfaces.dtos.email.v1.EmailResponseDTO;
+import org.fireflyframework.notifications.interfaces.dtos.email.v1.EmailTemplateRequestDTO;
 import org.fireflyframework.notifications.interfaces.interfaces.providers.email.v1.EmailProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
 
 @Service
+@Slf4j
 public class EmailServiceImpl implements EmailService {
 
     @Autowired
     private EmailProvider emailProvider;
 
+    @Autowired(required = false)
+    private NotificationTemplateEngine templateEngine;
+
     @Override
     public Mono<EmailResponseDTO> sendEmail(EmailRequestDTO request) {
         return emailProvider.sendEmail(request);
+    }
+
+    @Override
+    public Mono<EmailResponseDTO> sendTemplateEmail(EmailTemplateRequestDTO request) {
+        if (templateEngine == null) {
+            return Mono.error(new UnsupportedOperationException(
+                    "Template email not supported. Configure a NotificationTemplateEngine bean."));
+        }
+
+        return templateEngine.render(request.getTemplateId(), request.getTemplateVariables())
+                .flatMap(renderedHtml -> {
+                    EmailRequestDTO emailRequest = EmailRequestDTO.builder()
+                            .from(request.getFrom())
+                            .to(request.getTo())
+                            .cc(request.getCc())
+                            .bcc(request.getBcc())
+                            .subject(request.getSubject())
+                            .html(renderedHtml)
+                            .build();
+                    return emailProvider.sendEmail(emailRequest);
+                })
+                .doOnError(e -> log.error("Failed to send template email '{}': {}",
+                        request.getTemplateId(), e.getMessage()));
     }
 }
