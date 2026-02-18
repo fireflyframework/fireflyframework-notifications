@@ -2,7 +2,7 @@ package org.fireflyframework.notifications.core.services.sms.v1;
 
 import org.fireflyframework.notifications.interfaces.dtos.sms.v1.SMSRequestDTO;
 import org.fireflyframework.notifications.interfaces.dtos.sms.v1.SMSResponseDTO;
-import org.fireflyframework.notifications.interfaces.interfaces.providers.sms.v1.SMSProvider;
+import org.fireflyframework.notifications.interfaces.providers.sms.v1.SMSProvider;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;

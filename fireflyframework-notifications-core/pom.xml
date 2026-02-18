@@ -7,7 +7,7 @@
     <parent>
         <groupId>org.fireflyframework</groupId>
         <artifactId>fireflyframework-notifications</artifactId>
-        <version>26.02.04</version>
+        <version>26.02.05</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
@@ -17,17 +17,11 @@
     <name>Firefly Framework - Notifications Core</name>
     <description>Ports, DTOs and services for Notifications</description>
 
-    <properties>
-        <maven.compiler.source>21</maven.compiler.source>
-        <maven.compiler.target>21</maven.compiler.target>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    </properties>
-
     <dependencies>
         <!-- Firefly commons -->
         <dependency>
             <groupId>org.fireflyframework</groupId>
-            <artifactId>fireflyframework-core</artifactId>
+            <artifactId>fireflyframework-starter-core</artifactId>
             <version>${project.version}</version>
         </dependency>
 

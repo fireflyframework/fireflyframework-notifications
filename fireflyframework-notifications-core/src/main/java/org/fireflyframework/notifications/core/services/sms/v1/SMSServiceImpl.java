@@ -19,7 +19,7 @@ package org.fireflyframework.notifications.core.services.sms.v1;
 
 import org.fireflyframework.notifications.interfaces.dtos.sms.v1.SMSRequestDTO;
 import org.fireflyframework.notifications.interfaces.dtos.sms.v1.SMSResponseDTO;
-import org.fireflyframework.notifications.interfaces.interfaces.providers.sms.v1.SMSProvider;
+import org.fireflyframework.notifications.interfaces.providers.sms.v1.SMSProvider;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;

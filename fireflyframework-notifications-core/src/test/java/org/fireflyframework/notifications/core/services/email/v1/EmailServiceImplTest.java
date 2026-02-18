@@ -3,7 +3,7 @@ package org.fireflyframework.notifications.core.services.email.v1;
 import org.fireflyframework.notifications.interfaces.dtos.email.v1.EmailRequestDTO;
 import org.fireflyframework.notifications.interfaces.dtos.email.v1.EmailResponseDTO;
 import org.fireflyframework.notifications.interfaces.enums.EmailStatusEnum;
-import org.fireflyframework.notifications.interfaces.interfaces.providers.email.v1.EmailProvider;
+import org.fireflyframework.notifications.interfaces.providers.email.v1.EmailProvider;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;

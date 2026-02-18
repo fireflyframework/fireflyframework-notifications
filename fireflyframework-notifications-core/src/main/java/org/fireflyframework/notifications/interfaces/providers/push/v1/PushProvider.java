@@ -15,7 +15,7 @@
  */
 
 
-package org.fireflyframework.notifications.interfaces.interfaces.providers.push.v1;
+package org.fireflyframework.notifications.interfaces.providers.push.v1;
 
 import org.fireflyframework.notifications.interfaces.dtos.push.v1.PushNotificationRequest;
 import org.fireflyframework.notifications.interfaces.dtos.push.v1.PushNotificationResponse;

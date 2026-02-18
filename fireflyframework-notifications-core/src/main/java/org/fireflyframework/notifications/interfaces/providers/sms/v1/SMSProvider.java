@@ -15,28 +15,29 @@
  */
 
 
-package org.fireflyframework.notifications.interfaces.interfaces.providers.email.v1;
+package org.fireflyframework.notifications.interfaces.providers.sms.v1;
 
-import org.fireflyframework.notifications.interfaces.dtos.email.v1.EmailRequestDTO;
-import org.fireflyframework.notifications.interfaces.dtos.email.v1.EmailResponseDTO;
+import org.fireflyframework.notifications.interfaces.dtos.sms.v1.SMSRequestDTO;
+import org.fireflyframework.notifications.interfaces.dtos.sms.v1.SMSResponseDTO;
 import reactor.core.publisher.Mono;
 
 /**
- * Port (outbound interface) for sending email notifications.
+ * Port (outbound interface) for sending SMS notifications.
  * <p>
  * In hexagonal architecture, this interface represents an output port that defines
- * the contract for email delivery. Concrete implementations (adapters) provide the
- * actual infrastructure integration (e.g., SendGrid, Resend, AWS SES).
+ * the contract for SMS delivery. Concrete implementations (adapters) provide the
+ * actual infrastructure integration (e.g., Twilio, AWS SNS, Vonage).
  * <p>
  * The core domain and application layers depend only on this interface, never on
  * specific implementations, ensuring clean separation of concerns and testability.
  */
-public interface EmailProvider {
+public interface SMSProvider {
+
     /**
-     * Send an email using the provider's infrastructure.
+     * Send an SMS using the provider's infrastructure.
      *
-     * @param request Email request containing sender, recipients, subject, body (text/HTML), and optional attachments
-     * @return A reactive response containing delivery status and message ID
+     * @param request SMS request containing recipient phone number and message text
+     * @return Reactive response containing delivery status and message ID
      */
-    Mono<EmailResponseDTO> sendEmail(EmailRequestDTO request);
+    Mono<SMSResponseDTO> sendSMS(SMSRequestDTO request);
 }

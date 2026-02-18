@@ -2,7 +2,7 @@ package org.fireflyframework.notifications.core.services.push.v1;
 
 import org.fireflyframework.notifications.interfaces.dtos.push.v1.PushNotificationRequest;
 import org.fireflyframework.notifications.interfaces.dtos.push.v1.PushNotificationResponse;
-import org.fireflyframework.notifications.interfaces.interfaces.providers.push.v1.PushProvider;
+import org.fireflyframework.notifications.interfaces.providers.push.v1.PushProvider;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -22,7 +22,7 @@ import org.fireflyframework.notifications.core.services.template.NotificationTem
 import org.fireflyframework.notifications.interfaces.dtos.email.v1.EmailRequestDTO;
 import org.fireflyframework.notifications.interfaces.dtos.email.v1.EmailResponseDTO;
 import org.fireflyframework.notifications.interfaces.dtos.email.v1.EmailTemplateRequestDTO;
-import org.fireflyframework.notifications.interfaces.interfaces.providers.email.v1.EmailProvider;
+import org.fireflyframework.notifications.interfaces.providers.email.v1.EmailProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
