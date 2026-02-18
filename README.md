@@ -54,7 +54,7 @@ This architecture allows applications to switch notification providers without c
 <dependency>
     <groupId>org.fireflyframework</groupId>
     <artifactId>fireflyframework-notifications</artifactId>
-    <version>26.02.04</version>
+    <version>26.02.05</version>
 </dependency>
 ```
 
